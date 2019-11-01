@@ -5,42 +5,8 @@ import './todo-list-item.css';
 
 export default class TodoListItem extends Component {
 
-	state = {
-		done: false,
-		important: false
-	};
-
-	// constructor() {
-	// 	super();
-
-	// 	this.onLabelClick = () => {
-	// 		console.log(`Done: ${this.props.label}`)
-	// 	}
-	// } старый подход!
-	onLabelClick = () => {
-		this.setState(({done}) => {  // setState состояние этого компонента изменилось!
-			return {
-				done: !done
-			};
-		});
-	};
-
-	constructor() {
-		super();
-
-		this.onMarkImportant = () => {
-			this.setState(({important}) => {
-				return {
-					important: !important
-				};
-			});
-		}
-	}
-
-
 	render() {
-		const { label, onDeleted } = this.props; //! props - представляет коллекцию значений, которые ассоциированы с компонентом. Эти значения позволяют создавать динамические компоненты, которые не зависят от жестко закодированных статических данных.
-		const { done, important } = this.state;
+		const { label, onDeleted, onToggleImportant, onToggleDone, important, done } = this.props;
 
 		let className = "todo-list-item";
 
@@ -57,13 +23,13 @@ export default class TodoListItem extends Component {
 			<span className={className}>
 				<span
 					className="todo-list-item-label"
-					onClick={this.onLabelClick}>
+					onClick={onToggleDone}>
 					{label}
 				</span>
 
 				<button type="button"
 					className="btn btn-outline-success btn-sm float-right"
-					onClick={this.onMarkImportant}>
+					onClick={onToggleImportant}>
 					<i className="fa fa-exclamation" />
 				</button>
 
