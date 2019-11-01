@@ -39,7 +39,7 @@ export default class TodoListItem extends Component {
 
 
 	render() {
-		const { label } = this.props; //! props - представляет коллекцию значений, которые ассоциированы с компонентом. Эти значения позволяют создавать динамические компоненты, которые не зависят от жестко закодированных статических данных.
+		const { label, onDeleted } = this.props; //! props - представляет коллекцию значений, которые ассоциированы с компонентом. Эти значения позволяют создавать динамические компоненты, которые не зависят от жестко закодированных статических данных.
 		const { done, important } = this.state;
 
 		let className = "todo-list-item";
@@ -68,7 +68,8 @@ export default class TodoListItem extends Component {
 				</button>
 
 				<button type="button"
-					className="btn btn-outline-danger btn-sm float-right">
+					className="btn btn-outline-danger btn-sm float-right"
+					onClick={onDeleted}>
 					<i className="fa fa-trash-o" />
 				</button>
 			</span>
