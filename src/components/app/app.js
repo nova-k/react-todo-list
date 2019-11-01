@@ -96,8 +96,6 @@ export default class App extends Component {
 
 	};
 
-
-
 	render() {
 
 		const { todoData } = this.state
